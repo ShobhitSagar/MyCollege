@@ -27,17 +27,10 @@
             android:textAlignment="center"/>
 
         <Button
+            android:id="@+id/feedback_button"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="Take Attendance"
-            android:textSize="20sp"
-            android:textColor="#FFF"
-            android:textAlignment="center"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="Take Attendance"
+            android:text="Feedback"
             android:textSize="20sp"
             android:textColor="#FFF"
             android:textAlignment="center"/>

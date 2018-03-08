@@ -1,5 +1,6 @@
 package com.developerss.android.mycollege;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ public class TakeAttendanceActivity extends AppCompatActivity {
 
     DatabaseReference studentDatabaseReference;
     DatabaseReference attendanceDatabaseReference;
+    DatabaseReference allStudentsDatabaseReference;
 
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayList<String> presentStudentsList = new ArrayList<>();
@@ -48,6 +50,8 @@ public class TakeAttendanceActivity extends AppCompatActivity {
     String section;
     String period;
 
+    int m = 3;
+
     Button loadButton;
     Button submitButton;
     CheckedTextView allCheckBox;
@@ -64,6 +68,7 @@ public class TakeAttendanceActivity extends AppCompatActivity {
 
         studentDatabaseReference = FirebaseDatabase.getInstance().getReference("STUDENTS");
         attendanceDatabaseReference = FirebaseDatabase.getInstance().getReference("ATTENDANCE");
+        allStudentsDatabaseReference = FirebaseDatabase.getInstance().getReference("AllStudents");
 
         classSpinner = findViewById(R.id.class_spinner);
         periodSpinner = findViewById(R.id.period_spinner);
@@ -117,6 +122,8 @@ public class TakeAttendanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 submitAttendance();
+                Toast.makeText(TakeAttendanceActivity.this, "Attendance Submitted", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(TakeAttendanceActivity.this, TeacherDashboardActivity.class);
             }
         });
 
@@ -156,9 +163,26 @@ public class TakeAttendanceActivity extends AppCompatActivity {
 
         absentStudentsList = arrayList;
 
-        for (String pStud : presentStudentsList) {
+        for (final String pStud : presentStudentsList) {
             absentStudentsList.remove(pStud);
 
+            DatabaseReference reff = allStudentsDatabaseReference.child(pStud);
+            reff.child("Total Attendance").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String val = dataSnapshot.getValue().toString();
+                    m = Integer.parseInt(val);
+//                    Toast.makeText(TakeAttendanceActivity.this, val, Toast.LENGTH_SHORT).show();
+                    m++;
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(TakeAttendanceActivity.this, databaseError.toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            reff.child("Total Attendance").setValue(m);
             attendanceDatabaseReference.child(branch + " - " + section).child(dateString)
                     .child("Period - " + period).child(pStud).setValue("P");
 
@@ -219,25 +243,6 @@ public class TakeAttendanceActivity extends AppCompatActivity {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // do not change

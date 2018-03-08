@@ -19,6 +19,7 @@ public class TeacherActiviyFragment extends Fragment {
 
     Button takeAttendanceButton;
     Button uploadAssignmentButton;
+    Button feedbackButton;
 
     public TeacherActiviyFragment() {
         // Required empty public constructor
@@ -33,6 +34,7 @@ public class TeacherActiviyFragment extends Fragment {
 
         takeAttendanceButton = view.findViewById(R.id.take_attendance_button);
         uploadAssignmentButton = view.findViewById(R.id.upload_assignment_button);
+        feedbackButton = view.findViewById(R.id.feedback_button);
 
         takeAttendanceButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +48,14 @@ public class TeacherActiviyFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), UploadAssignmentActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        feedbackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), FeedbackActivity.class);
                 startActivity(intent);
             }
         });

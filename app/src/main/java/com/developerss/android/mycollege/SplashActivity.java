@@ -42,16 +42,17 @@ public class SplashActivity extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             user = dataSnapshot.child("User").getValue(String.class);
 
-                            assert user != null;
-                            if (user.equals("Teacher")){
-                                Intent intent = new Intent(SplashActivity.this, TeacherDashboardActivity.class);
-                                startActivity(intent);
-                            } else if (user.equals("Student")){
-                                Intent intent = new Intent(SplashActivity.this, TeacherDashboardActivity.class);
-                                startActivity(intent);
-                            } else if (user.equals("Admin")){
-                                Intent intent = new Intent(SplashActivity.this, TeacherDashboardActivity.class);
-                                startActivity(intent);
+                            if (user != null) {
+                                if (user.equals("Teacher")) {
+                                    Intent intent = new Intent(SplashActivity.this, TeacherDashboardActivity.class);
+                                    startActivity(intent);
+                                } else if (user.equals("Student")) {
+                                    Intent intent = new Intent(SplashActivity.this, TeacherDashboardActivity.class);
+                                    startActivity(intent);
+                                } else if (user.equals("Admin")) {
+                                    Intent intent = new Intent(SplashActivity.this, TeacherDashboardActivity.class);
+                                    startActivity(intent);
+                                }
                             }
                         }
 
@@ -61,7 +62,7 @@ public class SplashActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    Intent intent = new Intent(SplashActivity.this, TeacherDashboardActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
                     startActivity(intent);
                 }
 

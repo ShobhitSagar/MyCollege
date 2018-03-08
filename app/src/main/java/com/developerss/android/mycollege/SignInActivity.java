@@ -49,8 +49,6 @@ public class SignInActivity extends AppCompatActivity {
         registerTextView = findViewById(R.id.register_textview);
         signInButton = findViewById(R.id.sign_in_btn);
 
-//        getSupportActionBar().setTitle("Register");
-
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,21 +111,21 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        if (firebaseUser != null) {
-            userDashboard();
-            Toast.makeText(this, "User is Signed in already!", Toast.LENGTH_SHORT).show();
-//            Intent intent = new Intent(SignInActivity.this, TeacherDashboardActivity.class);
-//            startActivity(intent);
-        } else {
-            Toast.makeText(this, "Please Sign IN!", Toast.LENGTH_SHORT).show();
-        }
-
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//
+//        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+//        if (firebaseUser != null) {
+//            userDashboard();
+//            Toast.makeText(this, "User is Signed in already!", Toast.LENGTH_SHORT).show();
+////            Intent intent = new Intent(SignInActivity.this, TeacherDashboardActivity.class);
+////            startActivity(intent);
+//        } else {
+//            Toast.makeText(this, "Please Sign IN!", Toast.LENGTH_SHORT).show();
+//        }
+//
+//    }
 }
 
 

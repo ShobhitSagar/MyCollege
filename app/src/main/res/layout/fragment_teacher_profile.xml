@@ -3,14 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context="com.developerss.android.mycollege.TeacherProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_college_icon"
-        android:background="#121212"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -27,7 +23,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="User"
+        android:text="Department"
         android:textSize="20sp"/>
 
 </LinearLayout>

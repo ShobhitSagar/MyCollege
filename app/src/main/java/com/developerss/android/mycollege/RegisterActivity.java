@@ -44,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("USERS");
         firebaseAuth = FirebaseAuth.getInstance();
-        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        currentFirebaseUser = firebaseAuth.getCurrentUser();
 
         nameEditText = findViewById(R.id.name_edittext);
         emailEditText = findViewById(R.id.email_edittext);
@@ -63,10 +63,10 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            addUserToDatabase();
+//                            addUserToDatabase();
                             Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(RegisterActivity.this, SignInActivity.class);
-                            startActivity(intent);
+//                            Intent intent = new Intent(RegisterActivity.this, SignInActivity.class);
+//                            startActivity(intent);
 //                    Intent intent = new Intent(RegisterActivity.this, Dashboard.class);
 
                         } else {
@@ -91,35 +91,35 @@ public class RegisterActivity extends AppCompatActivity {
         mRef.child("Email").setValue(email);
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("REGISTER AS ");
-//        builder.setCancelable(false);
-//        builder.setItems(userList, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                switch (which) {
-//                    case 0:
-//                        user = userList[which];
-//                        getSupportActionBar().setTitle("Registering as " + user);
-//                        break;
-//                    case 1:
-//                        user = userList[which];
-//                        getSupportActionBar().setTitle("Registering as " + user);
-//                        break;
-//                    case 2:
-//                        user = userList[which];
-//                        getSupportActionBar().setTitle("Registering as " + user);
-//                        break;
-//                }
-//                dialog.dismiss();
-//            }
-//        });
-//        builder.show();
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("REGISTER AS ");
+        builder.setCancelable(false);
+        builder.setItems(userList, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0:
+                        user = userList[which];
+                        getSupportActionBar().setTitle("Registering as " + user);
+                        break;
+                    case 1:
+                        user = userList[which];
+                        getSupportActionBar().setTitle("Registering as " + user);
+                        break;
+                    case 2:
+                        user = userList[which];
+                        getSupportActionBar().setTitle("Registering as " + user);
+                        break;
+                }
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
 }
 
 

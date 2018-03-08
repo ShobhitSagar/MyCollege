@@ -7,12 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DatabaseReference;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TeacherProfileFragment extends Fragment {
 
+    DatabaseReference databaseReference;
 
     public TeacherProfileFragment() {
         // Required empty public constructor
@@ -23,7 +26,11 @@ public class TeacherProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_teacher_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_teacher_profile, container, false);
+
+
+
+        return view;
     }
 
 }

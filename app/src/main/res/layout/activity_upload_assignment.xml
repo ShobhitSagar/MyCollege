@@ -9,12 +9,21 @@
     tools:context="com.developerss.android.mycollege.UploadAssignmentActivity">
 
     <ImageView
-        android:id="@+id/upload_imageview"
+        android:id="@+id/click_imageview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#121212"
-        android:src="@drawable/ic_college_icon"
+        android:background="#bababa"
+        android:src="@drawable/ic_click_a_photo"
+        android:layout_marginBottom="10dp"/>
+
+    <ImageView
+        android:id="@+id/add_from_storage_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#bababa"
+        android:src="@drawable/ic_add_photo"
         android:layout_marginBottom="10dp"/>
 
     <Button
